@@ -122,7 +122,9 @@ class katello_devel (
   $foreman_dir = "${deployment_dir}/foreman"
   $foreman_cert_dir = "${deployment_dir}/foreman-certs"
 
-  include certs
+  class { 'certs':
+    group => $group,
+  }
 
   $candlepin_url = $katello::params::candlepin_url
   $candlepin_ca_cert = $certs::ca_cert
